@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        
+        
+        <script>
+const req = "Brand,Taxonomy,Channels,Title,Thread,Width,Length,Slot,Adjustable,Spacing";
+
+const notReq = "AddiotionalHtml,StockedRegions,QuoteOnlyRegions,Diameter,DiameterInches,Height,HeightInches";
+
+const setToNotReq ="Slot";
+
+const reqArray = req.split(',');
+const notReqArray = notReq.split(',');
+const setToNotReqArray = setToNotReq.split(',');
+
+const NumOfReq = reqArray.length;
+const NumOfNotReq = notReqArray.length;
+const NumOfSettoNotReq = setToNotReqArray.length;
+const NewNumOfReq = NumOfReq - NumOfSettoNotReq;
+const NewNumOfNotReq = NumOfNotReq + NumOfSettoNotReq;
+
+
+
+console.log("Number of required props:",NumOfReq,"Number of NOT required:",NumOfNotReq,"Props to set:",NumOfSettoNotReq );
+console.log("New number of REQUIRED should be:",NewNumOfReq);
+console.log("New number of NOT REQUIRED should be:",NewNumOfNotReq);
+
+
+
+let newReqArray = [...reqArray];
+console.log("Actual - new required array", newReqArray);
+let newNotReqArray = [...notReqArray];
+let count=0;
+
+setToNotReqArray.forEach(element => {
+  let index = reqArray.indexOf(element);
+  console.log(index);
+  if (index !== -1) {
+      console.log("LOOP newReqArray",newReqArray);
+    newReqArray.splice(index-count, 1);
+    console.log("LOOP AFTER SPILCE",newReqArray);
+    newNotReqArray.push(element);
+    count++;
+    console.log("Count",count);
+  }
+});
+console.log("SET NOT REQUIRED",setToNotReq);
+console.log("NEW REQUIRED",newReqArray);
+console.log("NEW NOT REQUIRED",newNotReqArray);
+
+
+
+                
+
+        </script>
+    </body>
+</html>
