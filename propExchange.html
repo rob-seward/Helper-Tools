@@ -6,17 +6,61 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="">
     </head>
     <body>
+       
+          <div class="mx-auto max-w-7xl pt-12 pr-12  pb-12 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="min-w-0 flex-1">
+                  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Prop Exchange</h2>
+                </div>
+                <div class="mt-4 flex md:ml-4 md:mt-0">
+                  <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Reset</button>
+                  <button type="button" class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Excahnge</button>
+                </div>
+              </div>
         
+            <div class="mx-auto pt-12 max-w-3xl">
+                <div class="isolate -space-y-px rounded-md shadow-sm">
+                    <div class="relative rounded-md rounded-b-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
+                      <label for="reqProps" class="block text-xs font-medium text-gray-900">Required</label>
+                      <input type="text" name="reqProps" id="req-props" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Required Properties">
+                    </div>
+                    <div class="relative rounded-md rounded-t-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
+                      <label for="notRequired" class="block text-xs font-medium text-gray-900">Not Required</label>
+                      <input type="text" name="notRequired" id="not-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Not Required Properties">
+                    </div>
+                    <div class="pt-12">
+                        <div class="rounded-md px-3 pb-1.5 pt-2.5 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+                            <label for="set-to-not-required" class="block text-xs font-medium text-gray-900">Set Properties To Not Required</label>
+                            <input type="text" name="set-to-not-Required" id="set-to-not-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter properties you want set to not required">
+                          </div>
+                      </div>
+                    </div>
+                    <div class="pt-24">
+                        <div class="isolate -space-y-px rounded-md shadow-sm">
+                            <div class="relative rounded-md rounded-b-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
+                              <label for="newRquired" class="block text-xs font-medium text-gray-900">New Required</label>
+                              <input type="text" name="newRequired" id="new-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Jane Smith">
+                            </div>
+                            <div class="relative rounded-md rounded-t-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
+                              <label for="newNotRequired" class="block text-xs font-medium text-gray-900">New Not Required</label>
+                              <input type="text" name="newNotRequired" id="new-not-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Head of Tomfoolery">
+                            </div>
+                          </div>
+                    </div>
+            </div>
+          </div>
+        
+       
         
         <script>
 const req = "Brand,Taxonomy,Channels,Title,Thread,Width,Length,Slot,Adjustable,Spacing";
-
 const notReq = "AddiotionalHtml,StockedRegions,QuoteOnlyRegions,Diameter,DiameterInches,Height,HeightInches";
-
 const setToNotReq ="Slot";
 
 const reqArray = req.split(',');
@@ -29,12 +73,21 @@ const NumOfSettoNotReq = setToNotReqArray.length;
 const NewNumOfReq = NumOfReq - NumOfSettoNotReq;
 const NewNumOfNotReq = NumOfNotReq + NumOfSettoNotReq;
 
-
+const setNotToreqInput = document.getElementById("set-to-not-required");
+const reqPropsInput = document.getElementById("req-props");
+const notRequiredInput = document.getElementById("not-required");
 
 console.log("Number of required props:",NumOfReq,"Number of NOT required:",NumOfNotReq,"Props to set:",NumOfSettoNotReq );
 console.log("New number of REQUIRED should be:",NewNumOfReq);
 console.log("New number of NOT REQUIRED should be:",NewNumOfNotReq);
 
+
+function transformText(text){
+    console.log(text);
+}
+
+//listens for an input event the takes it 'e' calls the handler 'transform text'
+setNotToreqInput.addEventListener('input', e => transformText(e.target.value));
 
 
 let newReqArray = [...reqArray];
@@ -58,6 +111,10 @@ console.log("SET NOT REQUIRED",setToNotReq);
 console.log("NEW REQUIRED",newReqArray);
 console.log("NEW NOT REQUIRED",newNotReqArray);
 
+function handleSetNotReq() {
+    console.log(value);
+}
+
 
 
                 
@@ -65,3 +122,4 @@ console.log("NEW NOT REQUIRED",newNotReqArray);
         </script>
     </body>
 </html>
+
