@@ -16,109 +16,119 @@
           <div class="mx-auto max-w-7xl pt-12 pr-12  pb-12 px-4 sm:px-6 lg:px-8">
             <div class="md:flex md:items-center md:justify-between">
                 <div class="min-w-0 flex-1">
-                  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Prop Exchange</h2>
+                  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Prop Swap</h2>
                 </div>
                 <div class="mt-4 flex md:ml-4 md:mt-0">
                   <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Reset</button>
-                  <button type="button" class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Excahnge</button>
+                  <button id="exchange-button" type="button" class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Swap</button>
                 </div>
               </div>
         
             <div class="mx-auto pt-12 max-w-3xl">
                 <div class="isolate -space-y-px rounded-md shadow-sm">
                     <div class="relative rounded-md rounded-b-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
-                      <label for="reqProps" class="block text-xs font-medium text-gray-900">Required</label>
-                      <input type="text" name="reqProps" id="req-props" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Required Properties">
+                      <label  for="reqProps" class="block text-xs font-medium text-gray-900">Required</label>
+                      <input type="text" name="reqProps" id="req-props" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter currently required properties">
                     </div>
                     <div class="relative rounded-md rounded-t-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
                       <label for="notRequired" class="block text-xs font-medium text-gray-900">Not Required</label>
-                      <input type="text" name="notRequired" id="not-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Not Required Properties">
+                      <input type="text" name="notRequired" id="not-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter currently not required properties">
                     </div>
                     <div class="pt-12">
                         <div class="rounded-md px-3 pb-1.5 pt-2.5 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
-                            <label for="set-to-not-required" class="block text-xs font-medium text-gray-900">Set Properties To Not Required</label>
+                            <label for="set-to-not-required" class="block text-xs font-medium text-gray-900">Properties NOT to be  required</label>
                             <input type="text" name="set-to-not-Required" id="set-to-not-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Enter properties you want set to not required">
                           </div>
                       </div>
                     </div>
-                    <div class="pt-24">
-                        <div class="isolate -space-y-px rounded-md shadow-sm">
-                            <div class="relative rounded-md rounded-b-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
-                              <label for="newRquired" class="block text-xs font-medium text-gray-900">New Required</label>
-                              <input type="text" name="newRequired" id="new-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Jane Smith">
-                            </div>
-                            <div class="relative rounded-md rounded-t-none px-3 pb-1.5 pt-2.5 ring-1 ring-inset ring-gray-300 focus-within:z-10 focus-within:ring-2 focus-within:ring-indigo-600">
-                              <label for="newNotRequired" class="block text-xs font-medium text-gray-900">New Not Required</label>
-                              <input type="text" name="newNotRequired" id="new-not-required" class="block w-full border-0 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Head of Tomfoolery">
-                            </div>
-                          </div>
-                    </div>
+                    
             </div>
           </div>
         
        
         
         <script>
-const req = "Brand,Taxonomy,Channels,Title,Thread,Width,Length,Slot,Adjustable,Spacing";
-const notReq = "AddiotionalHtml,StockedRegions,QuoteOnlyRegions,Diameter,DiameterInches,Height,HeightInches";
-const setToNotReq ="Slot";
 
-const reqArray = req.split(',');
-const notReqArray = notReq.split(',');
-const setToNotReqArray = setToNotReq.split(',');
-
-const NumOfReq = reqArray.length;
-const NumOfNotReq = notReqArray.length;
-const NumOfSettoNotReq = setToNotReqArray.length;
-const NewNumOfReq = NumOfReq - NumOfSettoNotReq;
-const NewNumOfNotReq = NumOfNotReq + NumOfSettoNotReq;
-
-const setNotToreqInput = document.getElementById("set-to-not-required");
+const setNotToReqInput = document.getElementById("set-to-not-required");
 const reqPropsInput = document.getElementById("req-props");
 const notRequiredInput = document.getElementById("not-required");
+const exchangeButton = document.getElementById("exchange-button");
+const newRequired = document.getElementById("new-required");
+const newNotRequired = document.getElementById("new-not-required");
 
-console.log("Number of required props:",NumOfReq,"Number of NOT required:",NumOfNotReq,"Props to set:",NumOfSettoNotReq );
-console.log("New number of REQUIRED should be:",NewNumOfReq);
-console.log("New number of NOT REQUIRED should be:",NewNumOfNotReq);
+
+exchangeButton.addEventListener('click',generateData);
+
+//Currently REQUIRED properties
+let req = [];
+    reqPropsInput.addEventListener('input', reqPropsUpdate);
+    
+    function reqPropsUpdate(e){
+    req = e.target.value.split(",");
+    }
+
+//Currently Not required properties
+
+let notReq = [];
+notRequiredInput.addEventListener('input', notReqPropsUpdate);
+    function notReqPropsUpdate(e) {
+        notReq = e.target.value.split(",");
+    }
+//New properties you want set to NOT required
+    let setToNotReq = [];
+    setNotToReqInput.addEventListener('input', updateValue);
+
+    function updateValue(e){
+    setToNotReq = e.target.value.split(",");
+    }
+   
+    
+   
+    function generateData(e) {
+        
+    const reqArray = req;
+
+    const notReqArray = notReq;
+    let newReqArray = [...reqArray];
 
 
-function transformText(text){
-    console.log("transformText",text.split());
+    let newNotReqArray = [...notReqArray];
+
+    let count=0;
+   
+    setToNotReq.forEach(element => {
+      
+    let index = reqArray.indexOf(element);
+    
+    if (index !== -1) {
+        
+        newReqArray.splice(index-count, 1);
+       
+    
+        newNotReqArray.push(element);
+        count++;
+      
+    }
+    });
+    console.log("SET TO NOT REQUIRED",setToNotReq);
+    console.log("NEW REQUIRED",newReqArray);
+    console.log("NEW NOT REQUIRED",newNotReqArray);
+    return {
+        
+        return newReqArray.join(', ');
+    };
 }
+const newReqDiv = document.createElement('div');
+const newReqP = document.createElement('p');
+const newReqArray = generateData();
+newReqP.innerText = `New Required: ${newReqArray.join(', ')}`;
+newReqDiv.appendChild(newReqP);
 
-//listens for an input event the takes it 'e' calls the handler 'transform text'
-setNotToreqInput.addEventListener('input', e => transformText(e.target.value));
-
-
-let newReqArray = [...reqArray];
-console.log("Actual - new required array", newReqArray);
-let newNotReqArray = [...notReqArray];
-let count=0;
-
-setToNotReqArray.forEach(element => {
-  let index = reqArray.indexOf(element);
-  console.log(index);
-  if (index !== -1) {
-      console.log("LOOP newReqArray",newReqArray);
-    newReqArray.splice(index-count, 1);
-    console.log("LOOP AFTER SPILCE",newReqArray);
-    newNotReqArray.push(element);
-    count++;
-    console.log("Count",count);
-  }
-});
-console.log("SET NOT REQUIRED",setToNotReq);
-console.log("NEW REQUIRED",newReqArray);
-console.log("NEW NOT REQUIRED",newNotReqArray);
-
-function handleSetNotReq() {
-    console.log(value);
-}
+    
 
 
 
-                
-
+            
         </script>
     </body>
 </html>
